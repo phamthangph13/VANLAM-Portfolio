@@ -1,7 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import logoImage from "@/public/images/logo.svg";
 import styles from "./SiteHeader.module.css";
 
 const leftLinks = [
@@ -60,17 +62,15 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <a className={styles.logoLink} href="/" aria-label="Văn Lam — trang chủ">
+          <Link className={styles.logoLink} href="/" aria-label="Văn Lam — trang chủ">
             <Image
               className={styles.logo}
-              src="/images/logo.svg"
+              src={logoImage}
               alt="Văn Lam"
-              width={1168}
-              height={880}
               unoptimized
               preload
             />
-          </a>
+          </Link>
 
           <nav
             className={`${styles.nav} ${styles.navRight}`}

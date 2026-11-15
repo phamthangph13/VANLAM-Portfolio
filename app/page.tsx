@@ -1,5 +1,9 @@
 import Image from "next/image";
 import SiteHeader from "@/components/SiteHeader";
+import bgImage from "@/public/images/background.png";
+import landscapeDesktop from "@/public/images/landscape.svg";
+import landscapeMobile from "@/public/images/mobile-landscape.svg";
+import primaryImage from "@/public/images/primary.svg";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -8,7 +12,7 @@ export default function Home() {
       <div className={styles.artwork} aria-hidden="true">
         <Image
           className={styles.paper}
-          src="/images/background.png"
+          src={bgImage}
           alt=""
           fill
           sizes="100vw"
@@ -17,10 +21,10 @@ export default function Home() {
         <picture className={styles.landscape}>
           <source
             media="(max-width: 767px) and (orientation: portrait)"
-            srcSet="/images/mobile-landscape.svg"
+            srcSet={landscapeMobile.src}
           />
           <img
-            src="/images/landscape.svg"
+            src={landscapeDesktop.src}
             alt=""
             width={1344}
             height={768}
@@ -29,10 +33,8 @@ export default function Home() {
         <div className={styles.primaryWrap}>
           <Image
             className={styles.primary}
-            src="/images/primary.svg"
+            src={primaryImage}
             alt=""
-            width={1945}
-            height={809}
             sizes="(max-width: 767px) 90vw, (max-width: 1099px) 118vw, 90vw"
             unoptimized
             preload
