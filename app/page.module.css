@@ -1,0 +1,166 @@
+.page {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  background: var(--paper);
+}
+
+/* ---------- Layered artwork ---------- */
+
+.artwork {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.paper {
+  object-fit: cover;
+  object-position: center;
+  animation: paperIn 1.8s ease both;
+}
+
+.landscape {
+  position: absolute;
+  inset: 0;
+  animation: landscapeIn 2.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.landscape img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+.primaryWrap {
+  position: absolute;
+  z-index: 2;
+  top: 13.1svh;
+  left: -7vw;
+  width: 90vw;
+  pointer-events: auto;
+  will-change: transform;
+}
+
+.primaryWrap::before {
+  content: "";
+  position: absolute;
+  inset: 4% -2%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 220, 132, 0.5) 0%,
+    rgba(250, 197, 92, 0.24) 46%,
+    rgba(250, 197, 92, 0) 74%
+  );
+  filter: blur(24px);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.primary {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  filter: drop-shadow(0 28px 40px rgba(89, 57, 25, 0.055));
+  animation: artIn 1.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: 0.06s;
+  transition: filter 0.55s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .primaryWrap:hover::before {
+    opacity: 1;
+  }
+
+  .primaryWrap:hover .primary {
+    filter: drop-shadow(0 0 4px rgba(255, 235, 174, 0.95))
+      drop-shadow(0 0 14px rgba(251, 205, 106, 0.7))
+      drop-shadow(0 0 34px rgba(232, 171, 62, 0.42))
+      drop-shadow(0 0 72px rgba(232, 171, 62, 0.22))
+      drop-shadow(0 26px 38px rgba(89, 57, 25, 0.05)) brightness(1.055)
+      saturate(1.1) sepia(0.03);
+  }
+}
+
+/* ---------- Keyframes ---------- */
+
+@keyframes paperIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes landscapeIn {
+  from {
+    opacity: 0;
+    transform: scale(1.035);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes artIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.988);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1099px) {
+  .primaryWrap {
+    top: 12.5svh;
+    left: -8vw;
+    width: 96vw;
+  }
+}
+
+@media (max-width: 1099px) and (orientation: portrait) {
+  .primaryWrap {
+    top: 12.5svh;
+    left: -12vw;
+    width: 118vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .landscape img {
+    object-position: center;
+  }
+
+  .primaryWrap {
+    top: 34.5svh;
+    left: -2.8vw;
+    width: 90vw;
+  }
+
+  .primary {
+    filter: drop-shadow(0 20px 28px rgba(89, 57, 25, 0.055));
+  }
+}
+
+@media (max-height: 560px) and (orientation: landscape) {
+  .primaryWrap {
+    top: 16svh;
+    left: -5vw;
+    width: 80vw;
+  }
+}
