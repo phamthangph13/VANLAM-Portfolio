@@ -62,7 +62,11 @@ export default function SiteHeader() {
             ))}
           </nav>
 
-          <Link className={styles.logoLink} href="/" aria-label="Văn Lam — trang chủ">
+          <Link
+            className={styles.logoLink}
+            href="/"
+            aria-label="Văn Lam — trang chủ"
+          >
             <Image
               className={styles.logo}
               src={logoImage}
@@ -72,10 +76,7 @@ export default function SiteHeader() {
             />
           </Link>
 
-          <nav
-            className={`${styles.nav} ${styles.navRight}`}
-            aria-label="Phụ"
-          >
+          <nav className={`${styles.nav} ${styles.navRight}`} aria-label="Phụ">
             {rightLinks.map((link) => (
               <a className={styles.link} href={link.href} key={link.label}>
                 {link.label}

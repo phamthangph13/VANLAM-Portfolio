@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import iconImage from "@/public/images/icon.svg";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,6 +20,9 @@ export const metadata: Metadata = {
     type: "website",
     locale: "vi_VN",
     siteName: "Văn Lam",
+  },
+  icons: {
+    icon: [{ url: iconImage.src, type: "image/svg+xml" }],
   },
 };
 

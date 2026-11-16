@@ -1,6 +1,7 @@
 import Image from "next/image";
 import SiteHeader from "@/components/SiteHeader";
 import bgImage from "@/public/images/background.png";
+import iconImage from "@/public/images/icon.svg";
 import landscapeDesktop from "@/public/images/landscape.svg";
 import landscapeMobile from "@/public/images/mobile-landscape.svg";
 import primaryImage from "@/public/images/primary.svg";
@@ -23,12 +24,7 @@ export default function Home() {
             media="(max-width: 767px) and (orientation: portrait)"
             srcSet={landscapeMobile.src}
           />
-          <img
-            src={landscapeDesktop.src}
-            alt=""
-            width={1344}
-            height={768}
-          />
+          <img src={landscapeDesktop.src} alt="" width={1344} height={768} />
         </picture>
         <div className={styles.primaryWrap}>
           <Image
@@ -40,6 +36,13 @@ export default function Home() {
             preload
           />
         </div>
+        <img
+          className={styles.cornerIcon}
+          src={iconImage.src}
+          alt=""
+          width={iconImage.width}
+          height={iconImage.height}
+        />
       </div>
 
       <SiteHeader />
